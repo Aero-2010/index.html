@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I Love You ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+    }
+    .page {
+      display: none;
+      text-align: center;
+      max-width: 400px;
+      padding: 30px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .page.active {
+      display: block;
+    }
+    h1 {
+      color: #e63946;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 30px;
+      background: #e63946;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+    }
+    button:hover {
+      transform: scale(1.05);
+      background: #d62839;
+    }
+    .small {
+      background: #457b9d;
+    }
+    .small:hover {
+      background: #35607a;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page active" id="page1">
+    <h1>Hey Love ❤️</h1>
+    <p>I made something just for you.</p>
+    <button onclick="nextPage(2)">Tap here 👀</button>
+  </div>
+
+  <div class="page" id="page2">
+    <h1>Guess what?</h1>
+    <p>You make my days brighter and my heart happier.</p>
+    <button onclick="nextPage(3)">Next 💕</button>
+  </div>
+
+  <div class="page" id="page3">
+    <h1>One more thing…</h1>
+    <p>No matter what happens, I choose you. Always.</p>
+    <button onclick="nextPage(4)">Final page 🥺</button>
+  </div>
+
+  <div class="page" id="page4">
+    <h1>I Love You ❤️</h1>
+    <p>More than words. More than you know.</p>
+    <button class="small" onclick="alert('You just made me smile ❤️')">Tap if you love me too 💖</button>
+  </div>
+
+  <script>
+    function nextPage(num) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page' + num).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
