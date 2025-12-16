@@ -55,7 +55,13 @@
 </head>
 <body>
 
+  <audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
   <div class="page active" id="page1">
+    <p style="font-size:14px;opacity:0.7;">(Music will start automatically ❤️)</p>
     <h1>Hey Love ❤️</h1>
     <p>I made something just for you.</p>
     <button onclick="nextPage(2)">Tap here 👀</button>
@@ -80,6 +86,15 @@
   </div>
 
   <script>
+    // Music will unmute on first user interaction
+    // Force music to start on first user interaction
+    document.addEventListener('click', () => {
+      const music = document.getElementById('bgMusic');
+      music.play().catch(() => {});
+    }, { once: true });
+      music.muted = false;
+      music.play();
+    }, { once: true });
     function nextPage(num) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById('page' + num).classList.add('active');
