@@ -14,10 +14,10 @@
       align-items: center;
       justify-content: center;
       color: #333;
+      text-align: center;
     }
     .page {
       display: none;
-      text-align: center;
       max-width: 400px;
       padding: 30px;
       background: rgba(255,255,255,0.9);
@@ -45,12 +45,6 @@
       transform: scale(1.05);
       background: #d62839;
     }
-    .small {
-      background: #457b9d;
-    }
-    .small:hover {
-      background: #35607a;
-    }
   </style>
 </head>
 <body>
@@ -60,11 +54,11 @@
     Your browser does not support the audio element.
   </audio>
 
-  <div class="page active" id="page1">
+  <button id="startButton">▶ Play music & Start ❤️</button>
+
+  <div class="page" id="page1">
     <h1>Hey Love ❤️</h1>
     <p>I made something just for you.</p>
-    <button class="small" onclick="startMusic()">▶ Play music 🎶</button>
-    <br><br>
     <button onclick="nextPage(2)">Tap here 👀</button>
   </div>
 
@@ -83,16 +77,19 @@
   <div class="page" id="page4">
     <h1>I Love You ❤️</h1>
     <p>More than words. More than you know.</p>
-    <button class="small" onclick="alert('You just made me smile ❤️')">Tap if you love me too 💖</button>
+    <button onclick="alert('You just made me smile ❤️')">Tap if you love me too 💖</button>
   </div>
 
   <script>
     const music = document.getElementById('bgMusic');
+    const btn = document.getElementById('startButton');
 
-    function startMusic() {
+    btn.addEventListener('click', () => {
       music.volume = 0.8;
-      music.play();
-    }
+      music.play().catch(() => alert('Your browser blocked the music. Tap the button again!'));
+      btn.style.display = 'none';
+      document.getElementById('page1').classList.add('active');
+    });
 
     function nextPage(num) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
